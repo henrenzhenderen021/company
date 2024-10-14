@@ -19,10 +19,10 @@ public class UserController {
     public Result<rUser> login(String account, String password){
         User user = userService.selectByAccount(account);
         if(user == null){
-            return Result.error(0);
+            return Result.error(1);
         }
         if(!password.equals(user.getUserPassword())){
-            return Result.error(1);
+            return Result.error(2);
         }
         rUser user1 = new rUser();
         user1.setUserId(user.getUserId());
@@ -35,7 +35,7 @@ public class UserController {
     public Result register(String account, String password, String username, String sex, String user_phone, String user_type){
         User user = userService.selectByAccount(account);
         if(user != null){
-            return Result.error(2);
+            return Result.error(3);
         }
         user = new User();
         user.setUserAccount(account);
@@ -52,13 +52,13 @@ public class UserController {
     public Result modify(String account, String password, String new_password){
         User user = userService.selectByAccount(account);
         if(user == null){
-            return Result.error(2);
+            return Result.error(1);
         }
         if(!password.equals(user.getUserPassword())){
-            return Result.error(3);
+            return Result.error(4);
         }
         if(password.equals(new_password)){
-            return Result.error(4);
+            return Result.error(5);
         }
         userService.update(account, new_password);
         return Result.success();
