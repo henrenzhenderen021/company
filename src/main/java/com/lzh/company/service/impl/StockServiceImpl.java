@@ -8,6 +8,7 @@ import com.lzh.company.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class StockServiceImpl implements StockService {
             Integer num = product.getProduct_num();
             Stock stock = stockMapper.select(storeId, id);
             if(stock == null || stock.getProductNum() < num){
+                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                 return false;
             }
             num = stock.getProductNum() - num;
