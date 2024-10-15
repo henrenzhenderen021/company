@@ -13,6 +13,7 @@ import com.lzh.company.pojo.User;
 import com.lzh.company.pojo.request.ProSale;
 import com.lzh.company.pojo.request.SProduct;
 import com.lzh.company.pojo.response.lSlip;
+import com.lzh.company.pojo.response.rSale;
 import com.lzh.company.pojo.response.rSlip;
 import com.lzh.company.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,7 @@ public class SaleServiceImpl implements SaleService {
 
     @Override
     public rSlip detail(Integer slipId) {
-        List<Sale> sales = saleMapper.getProduct(slipId);
+        List<rSale> sales = saleMapper.getProductPlus(slipId);
         Slip slip = slipMapper.getDetail(slipId);
         rSlip rslip = new rSlip();
         rslip.setProducts(sales);

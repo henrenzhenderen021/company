@@ -12,10 +12,10 @@ public class lSlip {
     private String storeName;
     private String customerName;
     private String telephone;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp createTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp updateTime;
 }
