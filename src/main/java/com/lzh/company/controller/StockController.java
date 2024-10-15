@@ -31,7 +31,7 @@ public class StockController {
     }
 
     @GetMapping("/detail")
-    public Result<List<Store>> detail(Integer store_id){
+    public Result<List<Store>> detail(@RequestParam Integer store_id){
         List<Store> stores = stockService.detail(store_id);
         return Result.success(stores);
     }

@@ -14,4 +14,6 @@ public interface UserMapper {
     void insert(User user);
     @Update("UPDATE t_user SET user_password = #{newPassword}, update_time = now() WHERE user_account = #{account}")
     void update(String account, String newPassword);
+    @Select("SELECT * FROM t_user WHERE user_id = #{userId}")
+    User selectById(Integer userId);
 }
