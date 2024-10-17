@@ -5,10 +5,7 @@ import com.lzh.company.pojo.User;
 import com.lzh.company.pojo.response.rUser;
 import com.lzh.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -17,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public Result<rUser> login(@RequestBody String account,@RequestBody String password){
+    public Result<rUser> login(@RequestParam String account, @RequestParam String password){
         User user = userService.selectByAccount(account);
         if(user == null){
             return Result.error(1);
@@ -33,8 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Result register(@RequestBody String account, @RequestBody String password, @RequestBody String username,
-                           @RequestBody String sex, @RequestBody String user_phone, @RequestBody String user_type){
+    public Result register(@RequestParam String account, @RequestParam String password, @RequestParam String username,
+                           @RequestParam String sex,  @RequestParam String user_phone,  @RequestParam String user_type){
         User user = userService.selectByAccount(account);
         if(user != null){
             return Result.error(3);
@@ -51,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping("/modify")
-    public Result modify(@RequestBody String account, @RequestBody String password, @RequestBody String new_password){
+    public Result modify(@RequestParam String account, @RequestParam String password, @RequestParam String new_password){
         User user = userService.selectByAccount(account);
         if(user == null){
             return Result.error(1);
