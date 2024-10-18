@@ -1,7 +1,6 @@
 package com.lzh.company.controller;
 
 import com.lzh.company.pojo.Result;
-import com.lzh.company.pojo.Slip;
 import com.lzh.company.pojo.request.ProSale;
 import com.lzh.company.pojo.response.lSlip;
 import com.lzh.company.pojo.response.rSlip;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sale")
+@CrossOrigin
 public class SaleController {
     @Autowired
     private SaleService saleService;
