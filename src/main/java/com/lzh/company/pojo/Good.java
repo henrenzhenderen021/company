@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class Good {
-    private int id;
+    private int productId;
     private String productName;
     private String productDesc;
     private int categoryId;

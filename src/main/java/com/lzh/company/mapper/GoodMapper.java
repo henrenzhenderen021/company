@@ -15,10 +15,10 @@ public interface GoodMapper {
     void addGood(Good good);
 
 
-    @Delete("delete from t_product where product_id = #{id}")
+    @Delete("delete from t_product where product_id = #{productId}")
     void deleteGood(Integer id);
 
-    @Update("update t_product set product_name = #{productName}, product_description = #{productDesc}, category_id = #{categoryId}, purchase_price = #{purchasePrice}, retail_price = #{retailPrice}, wholesale_price = #{wholesalePrice}, update_time = #{updateTime} where product_id = #{id}")
+    @Update("update t_product set product_name = #{productName}, product_description = #{productDesc}, category_id = #{categoryId}, purchase_price = #{purchasePrice}, retail_price = #{retailPrice}, wholesale_price = #{wholesalePrice}, update_time = #{updateTime} where product_id = #{productId}")
     void updateGood(Good newGood);
 
     @Select("select * from t_product ")

@@ -12,7 +12,7 @@ public interface CustomerMapper {
             "values(#{customerName}, #{sex}, #{telephone}, #{customerType}, #{createTime}, #{updateTime})")
     void add(Customer customer);
 
-    @Delete("delete from t_customer where customer_id = #{id}")
+    @Delete("delete from t_customer where customer_id = #{customerId}")
     void delete(Integer id);
 
 //    @Update("update t_customer set customer_name = #{customerName}, sex = #{sex}, telephone = #{telephone}, customer_type = #{customerType}, update_time = #{updateTime} where customer_id = #{id}")
@@ -26,7 +26,7 @@ public interface CustomerMapper {
             "<if test='customerType != null'>customer_type = #{customerType},</if>",
             "<if test='updateTime != null'>update_time = #{updateTime},</if>",
             "</set>",
-            "where customer_id = #{id}",
+            "where customer_id = #{customerId}",
             "</script>"
     })
     void update(Customer customer);
