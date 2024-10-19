@@ -1,7 +1,6 @@
 package com.lzh.company.controller;
 
 import com.lzh.company.pojo.Result;
-import com.lzh.company.pojo.Slip;
 import com.lzh.company.pojo.request.ProSale;
 import com.lzh.company.pojo.response.lSlip;
 import com.lzh.company.pojo.response.rSlip;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sale")
+@CrossOrigin
 public class SaleController {
     @Autowired
     private SaleService saleService;
@@ -26,7 +26,7 @@ public class SaleController {
     }
 
     @PostMapping("/examine")
-    public Result examine(@RequestBody Integer user_id, @RequestBody Integer slip_id,@RequestBody Integer state){
+    public Result examine(@RequestParam Integer user_id, @RequestParam Integer slip_id,@RequestParam Integer state){
         if(!saleService.examine(user_id, slip_id, state)){
             return Result.error(7);
         }
@@ -34,13 +34,13 @@ public class SaleController {
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestBody Integer slip_id){
+    public Result delete(@RequestParam Integer slip_id){
         saleService.delete(slip_id);
         return Result.success();
     }
 
     @GetMapping("/list")
-    public Result<List<lSlip>> list(Integer state, Integer pageNum, Integer pageSize){
+    public Result<List<lSlip>> list(@RequestParam Integer state, @RequestParam Integer pageNum, @RequestParam Integer pageSize){
         List<lSlip> lSlips = saleService.list(state, pageNum, pageSize);
         return Result.success(lSlips);
     }

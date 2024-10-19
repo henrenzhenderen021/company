@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("store")
+@CrossOrigin
 public class StockController {
     @Autowired
     private StockService stockService;

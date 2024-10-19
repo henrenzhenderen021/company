@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/good")
+@CrossOrigin
 public class GoodController {
     @Autowired
     private GoodService goodService;
